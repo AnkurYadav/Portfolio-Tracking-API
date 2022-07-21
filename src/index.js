@@ -12,8 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // mongoose connection
+const CONNECTION_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/portfoliodb";
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/portfoliodb", {
+mongoose.connect(CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
