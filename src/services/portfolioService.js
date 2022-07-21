@@ -100,9 +100,15 @@ const updateSecuritiesForTrade = async (trade) => {
  */
 const revertTradeforSecurity = async (trade) => {
   // just invert trade type and update security data acc to that
-  if (trade.type === "BUY") trade.type = "SELL";
-  else if (trade.type === "SELL") trade.type = "BUY";
-  return await updateSecuritiesForTrade(trade);
+  let revertedTrade = {
+    type: trade.type,
+    ticker: trade.ticker,
+    price: trade.price,
+    quantity: trade.quantity,
+  };
+  if (trade.type === "BUY") revertedTrade.type = "SELL";
+  else if (trade.type === "SELL") revertedTrade.type = "BUY";
+  return await updateSecuritiesForTrade(revertedTrade);
 };
 
 /**
