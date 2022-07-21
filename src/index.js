@@ -27,6 +27,10 @@ app.use(bodyParser.json());
 app.use("/api/trades", tradeRouter);
 app.use("/api/portfolio", portfolioRouter);
 
+app.get("/", (request, response) => {
+  response.redirect("/api/docs");
+});
+
 // start up server
 app.listen(PORT, () => {
   console.log(`API is listening on port ${PORT}`);
