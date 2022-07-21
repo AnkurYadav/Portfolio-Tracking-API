@@ -84,7 +84,7 @@ const deleteOneTrade = async (tradeId) => {
   try {
     let trade = await getOneTrade(tradeId);
     await portfolioService.revertTradeforSecurity(trade);
-    await Trade.remove({ _id: tradeId });
+    await Trade.deleteOne({ _id: tradeId });
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error };
   }

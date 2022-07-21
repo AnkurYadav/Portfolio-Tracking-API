@@ -161,7 +161,7 @@ const updateSecurity = async (ticker, changes) => {
  */
 const deleteSecurity = async (ticker) => {
   try {
-    let deletedSecurity = await Portfolio.remove({ ticker });
+    let deletedSecurity = await Portfolio.deleteOne({ ticker });
     return deletedSecurity;
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error };
